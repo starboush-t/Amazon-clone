@@ -82,7 +82,6 @@ function ProductScreen(props) {
 												<div className="row">
 													<div>Qty</div>
 													<div>
-														<input type="number"/>
 														<select
 															name="qty"
 															id="qty"
