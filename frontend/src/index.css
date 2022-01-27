@@ -85,7 +85,9 @@ button.primary {
 button.block {
 	width: 100%;
 }
-
+button.small {
+	font-size: 1.2rem;
+}
 /*Image*/
 img {
 	border-radius: 0.5rem;
@@ -131,6 +133,9 @@ a.brand {
 }
 .row.top {
 	align-items: flex-start;
+}
+.row.start{
+	justify-content: flex-start;
 }
 .col-1 {
 	flex: 1 1 25rem;
@@ -188,6 +193,10 @@ a.brand {
 	color: #a02020;
 	background-color: #ffe0e0e0;
 }
+.alert-success {
+	color: #20a020;
+	background-color: #eeffe0;
+  }
 
 /* forms */
 
@@ -213,7 +222,7 @@ a.brand {
 	position: absolute;
 	display: none;
 	right: 0;
-	min-width: 12rem;
+	min-width: 14rem;
 	padding: 1rem;
 	z-index: 1;
 	background-color: #203040;
@@ -236,4 +245,21 @@ a.brand {
 .checkout-steps > div.active {
 	border-top-color: #f08000;
 	color: #f08000;
+}
+/* Table */
+.table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.table tbody tr:nth-of-type(odd) {
+	background-color: #f4f4f4;
+}
+.table td,
+.table th {
+	text-align: left;
+	border: 0.1rem solid #e4e4e4;
+	padding:0.5rem;
+}
+.table button {
+	margin: 0 0.2rem;
 }

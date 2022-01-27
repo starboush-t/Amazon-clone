@@ -6,6 +6,7 @@ import MessageBox from "../components/MessageBox";
 import { detailsOrder, payOrder } from "../actions/orderActions";
 import Axios from "axios";
 import {PayPalButton} from "react-paypal-button-v2"
+import { ORDER_PAY_RESET } from "../constants/orderConstarnt";
 
 
 function OrderScreen(props) {
@@ -32,6 +33,7 @@ function OrderScreen(props) {
       document.body.appendChild(script);
     }
      if(!order || successPay || (order && order._id !== orderId)){
+       dispatch({type: ORDER_PAY_RESET});
       dispatch(detailsOrder(orderId));
     } else {
       if(!order.isPaid){
@@ -84,7 +86,7 @@ function OrderScreen(props) {
                   <strong>Method:</strong> {order.paymentMethod}
                 </p>
                 {
-                  order.isPaid ? (<MessageBox variant="success">Paid at{order.paidat}</MessageBox>)
+                  order.isPaid ? (<MessageBox variant="success">Paid at {order.paidAt}</MessageBox>)
                   :
                   (<MessageBox variant="danger">Not Paid</MessageBox>)
                 }
@@ -150,7 +152,7 @@ function OrderScreen(props) {
                     <strong>Order Total</strong>
                   </div>
                   <div>
-                    <strong>${order.totalPrice}</strong>
+                    <strong>${order.totalPrice.toFixed(2)}</strong>
                   </div>
                 </div>
               </li>
@@ -162,6 +164,7 @@ function OrderScreen(props) {
                       <>
                       {errorPay && (<MessageBox variant="danger">{errorPay}</MessageBox>)}
                       {loadingPay && (<LoadingBox></LoadingBox>)}
+                      
                       <PayPalButton amount={order.totalPrice} onSuccess={successPaymetHandler}></PayPalButton>
                       </>
                     )}
